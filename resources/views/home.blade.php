@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    {{$data[0]->balance}}
                 </div>
             </div>
         </div>

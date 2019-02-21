@@ -16,7 +16,7 @@
 // });
 
 Route::get('/','WalletController@index');
-Route::post('add', 'WalletController@add');
+Route::get('add', 'WalletController@add');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
