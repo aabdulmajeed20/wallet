@@ -1,5 +1,7 @@
 <?php
 
+use App\Notifications\InvoicePaid;
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,9 +17,18 @@
 //     return view('welcome');
 // });
 
+
 Route::get('/','WalletController@index');
 Route::get('add', 'WalletController@add');
 Auth::routes();
+
+// Route::get('/test', function ()
+// {
+//     $user = User::first()->notify(new InvoicePaid);
+//     return view('welcome');
+// });
+
+Route::get('/test','WalletController@transaction');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('ewallet', 'EWallet');
