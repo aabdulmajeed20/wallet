@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel => {{$data[0]->Test}}
+                    Laravel
                 </div>
 
                 <div class="links">
