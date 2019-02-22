@@ -13,8 +13,18 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header"><h3>Balance</h3></div>
+                            <div class="card-body">
+                                <h2>{{$user->ewallet()->first()->balance}}</h2>
+                            </div>
 
-                    {{$data[0]->balance}}
+
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
