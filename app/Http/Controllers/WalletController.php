@@ -7,12 +7,14 @@ use App\wallet;
 use App\Ewallet;
 use App\Notifications\InvoicePaid;
 use App\User;
+use Auth;
 
 class WalletController extends Controller
 {
     public function index() {
         $data = Ewallet::all();
-        return view('home', ['data' => $data]);
+        $user = Auth::user();
+        return view('home', ['data' => $data, 'user' => $user]);
     }
 
     public function add() {

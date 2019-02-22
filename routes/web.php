@@ -18,7 +18,7 @@ use App\User;
 // });
 
 
-Route::get('/home','WalletController@index');
+Route::get('/','HomeController@index');
 Route::get('add', 'WalletController@add');
 Auth::routes();
 
@@ -30,5 +30,5 @@ Auth::routes();
 
 Route::get('/test','WalletController@transaction');
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'WalletController@index')->name('home');
 Route::resource('ewallet', 'EWallet');
