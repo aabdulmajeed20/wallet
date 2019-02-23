@@ -10,15 +10,8 @@
         <div class="row">
           <div class="col-md-4"></div>
           <div class="form-group col-md-4">
-            <label for="receiver_name">Receiver name:</label>
+            <label for="receiver_name">Receiver IBAN:</label>
             <input type="text" class="form-control" name="receiver_name">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4"></div>
-          <div class="form-group col-md-4">
-            <label for="sender_name">Sender name:</label>
-            <input type="text" class="form-control" name="sender_name">
           </div>
         </div>
         <div class="row">

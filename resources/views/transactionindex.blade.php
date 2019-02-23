@@ -2,7 +2,8 @@
 <!-- transactionindex.blade.php -->
 @extends('layouts.app')
 @section('content')
-        <div class="container">
+    
+    <div class="container">
     <br />
     @if (\Session::has('success'))
       <div class="alert alert-success">
@@ -12,7 +13,7 @@
     <table class="table table-striped">
     <thead>
       <tr>
-        <th>Receiver IBAN</th>
+        <th>Receiver Name</th>
         <th>purpose</th>
         <th>amount</th>
         <th>Date</th>
