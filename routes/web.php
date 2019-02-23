@@ -28,6 +28,21 @@ Auth::routes();
 //     return view('welcome');
 // });
 
+Route::get('/transfer', [
+    'uses' => 'TransferController@index',
+    'as' => 'transfer'
+]);
+
+Route::post('/makeTransfer', [
+    'uses' => 'TransferController@makeTransfer',
+    'as' => 'makeTransfer'
+]);
+
+Route::get('/history', [
+    'uses' => 'HistoryController@index',
+    'as' => 'history'
+]);
+
 Route::get('/test','WalletController@transaction');
 
 Route::get('/home', 'WalletController@index')->name('home');
