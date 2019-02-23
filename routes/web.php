@@ -19,7 +19,7 @@ use App\User;
 
 
 Route::get('/','HomeController@index');
-Route::get('add', 'WalletController@add');
+// Route::get('add', 'WalletController@add');
 Auth::routes();
 
 // Route::get('/test', function ()
@@ -28,7 +28,19 @@ Auth::routes();
 //     return view('welcome');
 // });
 
-Route::get('/test','WalletController@transaction');
+Route::get('/test','WalletController@notify');
 
 Route::get('/home', 'WalletController@index')->name('home');
 Route::resource('ewallet', 'EWallet');
+
+/// for creating transaction
+Route::get('add','TransactionController@create');
+Route::post('add','TransactionController@store');
+Route::get('transaction','TransactionController@index');
+Route::get('invoice','TransactionController@invoice');
+
+/*
+Route::get('edit/{id}','TransactionController@edit');
+Route::post('edit/{id}','TransactionController@update');
+Route::delete('{id}','TransactionController@destroy');
+/*/

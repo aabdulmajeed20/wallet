@@ -17,4 +17,9 @@ class Ewallet extends Eloquent
     public function user() {
         return $this->belongsTo('App\User');
     }
+
+    public function transaction()
+    {
+        return $this->hasMany('App\Transaction');
+    }
 }

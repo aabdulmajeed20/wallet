@@ -21,4 +21,11 @@ class WalletController extends Controller
         $wallet = Ewallet::first()->delete();
         return $wallet;
     }
+
+    public function notify()
+    {
+    $user = User::first()->notify(new InvoicePaid);
+    $data = wallet::all();
+    return view('welcome', ['data' => $data]);
+    }
 }
