@@ -12,7 +12,7 @@
     <table class="table table-striped">
     <thead>
       <tr>
-        <th>Receiver Name</th>
+        <th>Receiver IBAN</th>
         <th>purpose</th>
         <th>amount</th>
         <th>Date</th>
