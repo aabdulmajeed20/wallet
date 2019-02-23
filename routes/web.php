@@ -30,6 +30,23 @@ Auth::routes();
 
 Route::get('/test','WalletController@notify');
 
+Route::get('/transfer', [
+    'uses' => 'TransferController@index',
+    'as' => 'transfer'
+]);
+
+Route::post('/makeTransfer', [
+    'uses' => 'TransferController@makeTransfer',
+    'as' => 'makeTransfer'
+]);
+
+Route::get('/history', [
+    'uses' => 'HistoryController@index',
+    'as' => 'history'
+]);
+
+Route::get('/test','WalletController@transaction');
+
 Route::get('/home', 'WalletController@index')->name('home');
 Route::resource('ewallet', 'EWallet');
 
