@@ -35,10 +35,10 @@ Route::get('/transfer', [
     'as' => 'transfer'
 ]);
 
-Route::post('/makeTransfer', [
-    'uses' => 'TransferController@makeTransfer',
-    'as' => 'makeTransfer'
-]);
+// Route::post('/makeTransfer', [
+//     'uses' => 'TransferController@makeTransfer',
+//     'as' => 'makeTransfer'
+// ]);
 
 Route::get('/history', [
     'uses' => 'HistoryController@index',
@@ -51,9 +51,15 @@ Route::get('/home', 'WalletController@index')->name('home');
 Route::resource('ewallet', 'EWallet');
 
 /// for creating transaction
-Route::get('add','TransactionController@create');
-Route::post('add','TransactionController@store');
-Route::get('transaction','TransactionController@index');
+Route::get('makeTransfer','TransactionController@create');
+Route::post('makeTransfer', [
+    'uses' => 'TransactionController@store',
+    'as' => 'makeTransfer',
+]);
+Route::get('transaction', [
+    'uses' => 'TransactionController@index',
+    'as' => 'transactions'
+]);
 Route::get('invoice','TransactionController@invoice');
 
 /*

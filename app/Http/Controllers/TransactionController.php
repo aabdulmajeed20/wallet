@@ -24,7 +24,6 @@ class TransactionController extends Controller
         $transaction->amount = $request->get('amount');    
         $wallet = Ewallet::where('iban', $transaction->receiver_iban)->get()->first();
         $transaction = $wallet->transaction()->save($transaction);
-        $transaction->save();
         return redirect('transaction')->with('success', 'transaction has been successfully added');
     }
 
