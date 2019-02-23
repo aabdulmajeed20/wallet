@@ -19,7 +19,6 @@ class TransactionController extends Controller
     {
         $transaction = new Transaction();
         $transaction->receiver_iban = $request->get('receiver_name');
-        // $transaction->sender_name = $request->get('sender_name');
         $transaction->purpose = $request->get('purpose');   
         $transaction->amount = $request->get('amount');    
         $wallet = Ewallet::where('iban', $transaction->receiver_iban)->get()->first();
