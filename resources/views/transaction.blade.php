@@ -5,7 +5,7 @@
 
   <div class="container">
     </div>
-      <form method="post" action="{{url('add')}}">
+      <form method="post" action="{{url('makeTransfer')}}">
         @csrf
         <div class="row">
           <div class="col-md-4"></div>

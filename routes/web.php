@@ -51,7 +51,10 @@ Route::get('/home', 'WalletController@index')->name('home');
 Route::resource('ewallet', 'EWallet');
 
 /// for creating transaction
-Route::get('makeTransfer','TransactionController@create');
+Route::get('createTransfer', [
+    'uses' => 'TransactionController@create',
+    'as' => 'createTransfer'
+]);
 Route::post('makeTransfer', [
     'uses' => 'TransactionController@store',
     'as' => 'makeTransfer',
