@@ -26,7 +26,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="row extend-row">
-                                <a href="{{route('makeTransfer')}}" class="btn btn-success full-button"><h3>Make Transfer</h3></a>
+                                <a href="{{route('createTransfer')}}" class="btn btn-success full-button"><h3>Make Transfer</h3></a>
                             </div>
                             <div class="row extend-row">
                                 <a href="{{route('transactions')}}" class="btn btn-primary full-button"><h3>Show History</h3></a>

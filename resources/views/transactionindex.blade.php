@@ -14,6 +14,7 @@
     <thead>
       <tr>
         <th>Receiver Name</th>
+        <th>Sender IBAN</th>
         <th>purpose</th>
         <th>amount</th>
         <th>Date</th>
@@ -25,6 +26,7 @@
       @foreach($transactions as $transaction)
       <tr>
         <td>{{$transaction->ewallet()->first()->user()->first()->name}}</td>
+        <td>{{$transaction->sender_iban}}</td>
         <td>{{$transaction->purpose}}</td>
         <td>{{$transaction->amount}}</td>
         <td>{{$transaction->created_at}}</td>
