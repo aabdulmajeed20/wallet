@@ -45,6 +45,7 @@ class TransactionController extends Controller
             $transaction->receiver_iban = $request->get('receiver_iban');
             $transaction->purpose = $request->get('purpose'); 
             $transaction->sender_iban = Auth::user()->ewallet()->first()->iban;
+            $transaction->sender_name = Auth::user()->name;
             $transaction->amount = $request->get('amount');
         }
         else
@@ -66,7 +67,7 @@ class TransactionController extends Controller
         $data = ['receiver_wallet' => $receiver_wallet, 'sender_wallet' => $sender_wallet, 'transaction' => $transaction];
 
         // Send notifications to the sender and receiver
-        $transaction->notify($data);
+        // $transaction->notify($data);
 
         $transaction = $receiver_wallet->transaction()->save($transaction);
         $receiver_wallet->save();
@@ -82,9 +83,10 @@ class TransactionController extends Controller
         return view('history', ['transactions' => $transactions, 'wallet' => $wallet]);
     }
 
-    public function invoice()
+    public function details($transaction_id)
     {
-        return view('invoice');
+        $transaction = Transaction::where('id', $transaction_id)->first();
+        return view('invoice', ['$transaction' => $transaction]);
     }
 
 }

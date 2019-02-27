@@ -19,13 +19,11 @@ use App\User;
 
 
 Route::get('/','HomeController@index');
-// Route::get('add', 'WalletController@add');
 Auth::routes();
 
 
 
 Route::get('/home', 'WalletController@index')->name('home');
-Route::resource('ewallet', 'EWallet');
 
 /// for creating transaction
 Route::get('createTransfer', [
@@ -41,4 +39,7 @@ Route::get('transaction', [
     'uses' => 'TransactionController@index',
     'as' => 'transactions'
 ]);
-Route::get('invoice','TransactionController@invoice');
+Route::get('/details/{transaction_id}', [
+    'uses' => 'TransactionController@details',
+    'as' => 'details'
+]);
