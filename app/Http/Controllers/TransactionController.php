@@ -26,6 +26,7 @@ class TransactionController extends Controller
     public function store(Request $request)
     {
         $receiver_wallet = Ewallet::where('iban', $request->get('receiver_iban'))->get()->first();
+        // Check if the wallet exist
         if($receiver_wallet !== null)
         {
             if($request->get('amount') <= 0)
@@ -33,6 +34,7 @@ class TransactionController extends Controller
                 return redirect('createTransfer')->with('failed', 'The amount should be greater than 0!');
             }
 
+            // Check if the user try to transfer to himself
             if($request->get('receiver_iban') === Auth::user()->ewallet()->first()->iban)
             {
                 return redirect('createTransfer')->with('failed', "You can't transfer to yourself");
@@ -50,9 +52,9 @@ class TransactionController extends Controller
             return redirect('createTransfer')->with('failed', 'The IBAN you entered is not found!');
         }        
 
-        // Get sender and receiver wallets data
         $sender_wallet = Ewallet::where('iban', $transaction->sender_iban)->get()->first();
 
+        // Check if the user has the amount of transaction
         if($sender_wallet->balance < $transaction->amount + 0.01) 
         {
             return redirect('createTransfer')->with('failed', 'Your Balance is less than the amount!');           
@@ -63,6 +65,7 @@ class TransactionController extends Controller
         // Data will be related with the messages
         $data = ['receiver_wallet' => $receiver_wallet, 'sender_wallet' => $sender_wallet, 'transaction' => $transaction];
 
+        // Send notifications to the sender and receiver
         $transaction->notify($data);
 
         $transaction = $receiver_wallet->transaction()->save($transaction);
@@ -71,6 +74,7 @@ class TransactionController extends Controller
         return redirect('transaction')->with('success', 'transaction has been successfully added');
     }
 
+    // Show the transactions history related to the user
     public function index()
     {
         $wallet = Ewallet::where('user_id', Auth::user()->id)->get();
