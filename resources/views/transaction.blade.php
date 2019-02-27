@@ -4,6 +4,12 @@
     
 
   <div class="container">
+    <br/>
+    @if (\Session::has('failed'))
+      <div class="alert alert-danger">
+        <p>{{ \Session::get('failed') }}</p>
+      </div><br />
+      @endif
     </div>
       <form method="post" action="{{url('makeTransfer')}}">
         @csrf
