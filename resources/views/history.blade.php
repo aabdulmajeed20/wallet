@@ -1,5 +1,5 @@
 
-<!-- transactionindex.blade.php -->
+<!-- history.blade.php -->
 @extends('layouts.app')
 @section('content')
     
