@@ -17,7 +17,7 @@
           <div class="col-md-4"></div>
           <div class="form-group col-md-4">
             <label for="receiver_name">Receiver IBAN:</label>
-            <input type="text" class="form-control" name="receiver_name" required>
+            <input type="text" class="form-control" name="receiver_iban" required>
           </div>
         </div>
         <div class="row">
