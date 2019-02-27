@@ -17,21 +17,21 @@
           <div class="col-md-4"></div>
           <div class="form-group col-md-4">
             <label for="receiver_name">Receiver IBAN:</label>
-            <input type="text" class="form-control" name="receiver_name">
+            <input type="text" class="form-control" name="receiver_name" required>
           </div>
         </div>
         <div class="row">
           <div class="col-md-4"></div>
           <div class="form-group col-md-4">
             <label for="purpose">purpose:</label>
-            <input type="text" class="form-control" name="purpose">
+            <input type="text" class="form-control" name="purpose" required>
           </div>
         </div>
         <div class="row">
           <div class="col-md-4"></div>
           <div class="form-group col-md-4">
             <label for="amount">amount:</label>
-            <input type="text" class="form-control" name="amount">
+            <input type="number" step="0.001" class="form-control" name="amount" required>
           </div>
         </div>
         <div class="row">

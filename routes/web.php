@@ -22,30 +22,7 @@ Route::get('/','HomeController@index');
 // Route::get('add', 'WalletController@add');
 Auth::routes();
 
-// Route::get('/test', function ()
-// {
-//     $user = User::first()->notify(new InvoicePaid);
-//     return view('welcome');
-// });
 
-Route::get('/test','WalletController@notify');
-
-Route::get('/transfer', [
-    'uses' => 'TransferController@index',
-    'as' => 'transfer'
-]);
-
-// Route::post('/makeTransfer', [
-//     'uses' => 'TransferController@makeTransfer',
-//     'as' => 'makeTransfer'
-// ]);
-
-Route::get('/history', [
-    'uses' => 'HistoryController@index',
-    'as' => 'history'
-]);
-
-Route::get('/test','WalletController@transaction');
 
 Route::get('/home', 'WalletController@index')->name('home');
 Route::resource('ewallet', 'EWallet');
@@ -55,6 +32,7 @@ Route::get('createTransfer', [
     'uses' => 'TransactionController@create',
     'as' => 'createTransfer'
 ]);
+
 Route::post('makeTransfer', [
     'uses' => 'TransactionController@store',
     'as' => 'makeTransfer',
@@ -64,9 +42,3 @@ Route::get('transaction', [
     'as' => 'transactions'
 ]);
 Route::get('invoice','TransactionController@invoice');
-
-/*
-Route::get('edit/{id}','TransactionController@edit');
-Route::post('edit/{id}','TransactionController@update');
-Route::delete('{id}','TransactionController@destroy');
-/*/

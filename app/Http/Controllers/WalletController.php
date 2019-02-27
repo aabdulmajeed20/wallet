@@ -27,10 +27,4 @@ class WalletController extends Controller
         return $wallet;
     }
 
-    public function notify()
-    {
-    $user = User::first()->notify(new InvoicePaid);
-    $data = wallet::all();
-    return view('welcome', ['data' => $data]);
-    }
 }

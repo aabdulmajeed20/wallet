@@ -7,14 +7,16 @@ use App\Transaction;
 use App\Ewallet;
 use Auth;
 use Illuminate\Support\Facades\Redirect;
-use Lcobucci\JWT\Signer\Ecdsa\Sha256;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 
 class TransactionController extends Controller
 {
-    //
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function create()
     {
@@ -43,17 +45,7 @@ class TransactionController extends Controller
         // Data will be related with the messages
         $data = ['receiver_wallet' => $receiver_wallet, 'sender_wallet' => $sender_wallet, 'transaction' => $transaction];
 
-        // Receiver notification
-        $receiver = $receiver_wallet->user()->first()->email;
-        Mail::send('receiver_mail', $data, function($message) use($receiver) {
-            $message->to($receiver)->subject('You have received a new transaction');
-        });
-
-        // Sender notification
-        $sender = $sender_wallet->user()->first()->email;
-        Mail::send('sender_mail', $data, function($message) use($sender) {
-            $message->to($sender)->subject('Transaction details');
-        });
+        $transaction->notify($data);
 
         $transaction = $receiver_wallet->transaction()->save($transaction);
         $receiver_wallet->save();
@@ -63,11 +55,9 @@ class TransactionController extends Controller
 
     public function index()
     {
-
         $wallet = Ewallet::where('user_id', Auth::user()->id)->get();
         $transactions = Transaction::where('sender_iban', $wallet->first()->iban)->orWhere('receiver_iban', $wallet->first()->iban)->get();
-        $testHash = Hash::make('176.18.114.31');
-        return view('transactionindex', ['transactions' => $transactions, 'wallet' => $wallet, 'testHash' => $testHash]);
+        return view('history', ['transactions' => $transactions, 'wallet' => $wallet]);
     }
 
     public function invoice()
