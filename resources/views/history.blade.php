@@ -11,7 +11,7 @@
       </div><br/>
      @endif
       <ul id="myTab" class="nav nav-tabs">
-          <li class="active"><a href="#home" data-toggle="tab">Home</a>
+          <li class="active"><a href="#home" data-toggle="tab">All</a>
           </li>
           <li><a href="#receiver" data-toggle="tab">Received</a>
           </li>
@@ -24,22 +24,20 @@
             <table class="table table-bordered">
               <thead>
                 <tr>
-                  <th>Receiver Name</th>
-                  <th>Sender IBAN</th>
-                  <th>purpose</th>
+                  <th>Transaction type</th>
                   <th>amount</th>
                   <th>Date</th>
+                  <th>Details</th>
                 </tr>
               </thead>
               <tbody>
                 @foreach($transactions as $transaction)
                 
                 <tr>
-                  <td>{{$transaction->ewallet()->first()->user()->first()->name}}</td>
-                  <td>{{$transaction->sender_iban}}</td>
-                  <td>{{$transaction->purpose}}</td>
+                  <td>{{$transaction->receiver_iban == $wallet->first()->iban ? 'Received' : 'Sent'}}</td>
                   <td>{{$transaction->amount}}</td>
                   <td>{{$transaction->created_at}}</td>
+                  <td> <button class="btn btn-default"><a href=" {{route('details', ['transaction_id' => $transaction->id])}} ">Details</a></button> </td>
                 </tr>
                 @endforeach
               </tbody>
@@ -63,7 +61,7 @@
                         <td>{{$transaction->sender_name}}</td>
                         <td>{{$transaction->amount}}</td>
                         <td>{{$transaction->created_at}}</td>
-                        <td> <button><a href=" {{route('details', ['transaction_id' => $transaction->id])}} ">Details</a></button> </td>
+                        <td> <button class="btn btn-default"><a href=" {{route('details', ['transaction_id' => $transaction->id])}} ">Details</a></button> </td>
                       </tr>
                       @endif
                       @endforeach
@@ -88,7 +86,7 @@
                                 <td>{{$transaction->ewallet()->first()->user()->first()->name}}</td>
                                 <td>{{$transaction->amount}}</td>
                                 <td>{{$transaction->created_at}}</td>
-                                <td> <button><a href=" {{route('details', ['transaction_id' => $transaction->id])}} ">Details</a></button></td>
+                                <td> <button class="btn btn-default"><a href=" {{route('details', ['transaction_id' => $transaction->id])}} ">Details</a></button></td>
                           </tr>
                           @endif
                           @endforeach

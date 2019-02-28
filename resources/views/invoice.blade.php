@@ -107,13 +107,12 @@
                     <table>
                         <tr>
                             <td class="title">
-                                <img src="https://www.sparksuite.com/images/logo.png" style="width:100%; max-width:300px;">
+                                <img src="https://bullmarketz.com/wp-content/uploads/2017/12/E-wallet.png" style="width:100%; max-width:300px;">
                             </td>
                             
                             <td>
-                                Invoice #: 123<br>
-                                Created: January 1, 2015<br>
-                                Due: February 1, 2015
+                               <p class="invoice-top"> Invoice #: {{$transaction->id}} </p><br>
+                                Created: {{$transaction->created_at->toDateString()}}<br>
                             </td>
                         </tr>
                     </table>

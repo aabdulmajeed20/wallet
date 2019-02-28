@@ -6,3 +6,8 @@
     margin-top: 10px;
     height: 60px;
 }
+.invoice-top {
+  margin-top: 7px;
+  font-weight: bold;
+  size: 10px;
+}

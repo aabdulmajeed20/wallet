@@ -85,8 +85,8 @@ class TransactionController extends Controller
 
     public function details($transaction_id)
     {
-        $transaction = Transaction::where('id', $transaction_id)->first();
-        return view('invoice', ['$transaction' => $transaction]);
+        $transaction = Transaction::where('_id', $transaction_id)->first();
+        return view('invoice', ['transaction' => $transaction]);
     }
 
 }
