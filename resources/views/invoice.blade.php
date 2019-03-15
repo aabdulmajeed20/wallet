@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>A simple, clean, and responsive HTML invoice template</title>
+    <title>Invoice</title>
     
     <style>
     .invoice-box {
@@ -124,15 +124,15 @@
                     <table>
                         <tr>
                             <td>
-                                Sparksuite, Inc.<br>
-                                12345 Sunny Road<br>
-                                Sunnyville, CA 12345
+                                From:
+                                {{$transaction->ewallet()->first()->user()->first()->name}}<br>
+                                Iban number: {{$transaction->sender_iban}}
                             </td>
                             
                             <td>
-                                Acme Corp.<br>
-                                John Doe<br>
-                                john@example.com
+                                To :
+                                {{$transaction->sender_iban}} <br>
+                               Iban number: {{$transaction->receiver_iban}}
                             </td>
                         </tr>
                     </table>
@@ -141,71 +141,24 @@
             
             <tr class="heading">
                 <td>
-                    Payment Method
+                    purpose
                 </td>
                 
                 <td>
-                    Check #
+                    Amount
                 </td>
             </tr>
             
             <tr class="details">
                 <td>
-                    Check
+                     {{$transaction->purpose}}
                 </td>
                 
                 <td>
-                    1000
+                     {{$transaction->amount}}
                 </td>
             </tr>
             
-            <tr class="heading">
-                <td>
-                    Item
-                </td>
-                
-                <td>
-                    Price
-                </td>
-            </tr>
-            
-            <tr class="item">
-                <td>
-                    Website design
-                </td>
-                
-                <td>
-                    $300.00
-                </td>
-            </tr>
-            
-            <tr class="item">
-                <td>
-                    Hosting (3 months)
-                </td>
-                
-                <td>
-                    $75.00
-                </td>
-            </tr>
-            
-            <tr class="item last">
-                <td>
-                    Domain name (1 year)
-                </td>
-                
-                <td>
-                    $10.00
-                </td>
-            </tr>
-            
-            <tr class="total">
-                <td></td>
-                
-                <td>
-                   Total: $385.00
-                </td>
-            </tr>
         </table>
     </div>
 </body>
