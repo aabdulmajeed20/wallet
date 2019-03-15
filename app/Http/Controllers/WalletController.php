@@ -22,9 +22,4 @@ class WalletController extends Controller
         return view('home', ['data' => $data, 'user' => $user]);
     }
 
-    public function add() {
-        $wallet = Ewallet::first()->delete();
-        return $wallet;
-    }
-
 }
