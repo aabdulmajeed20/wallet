@@ -79,7 +79,8 @@ class TransactionController extends Controller
     public function index()
     {
         $wallet = Ewallet::where('user_id', Auth::user()->id)->get();
-        $transactions = Transaction::where('sender_iban', $wallet->first()->iban)->orWhere('receiver_iban', $wallet->first()->iban)->get();
+        $transactions = Transaction::where('sender_iban', $wallet->first()->iban)
+            ->orWhere('receiver_iban', $wallet->first()->iban)->get();
         return view('history', ['transactions' => $transactions, 'wallet' => $wallet]);
     }
 

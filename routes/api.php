@@ -20,9 +20,10 @@ use Illuminate\Http\Request;
 Route::post('login', 'API\UserController@login');
 Route::post('register', 'API\UserController@register');
 
-Route::post('/plusWallet', 'WalletController@plusWallet');
 
-Route::group(['middleware' => 'auth:api'], function(){
-    Route::post('details', 'API\UserController@details');
+Route::group(['middleware' => 'auth:api'], function() 
+{
+    Route::get('details', 'API\UserController@details');
+    Route::post('/plusWallet', 'WalletController@plusWallet');
 });
 
