@@ -17,7 +17,9 @@ class WalletController extends Controller
     {
         $this->middleware('auth:api');
     }
-    public function index() {
+    
+    public function index() 
+    {
         $data = Ewallet::all();
         $user = Auth::user();
         return view('home', ['data' => $data, 'user' => $user]);
@@ -25,13 +27,10 @@ class WalletController extends Controller
 
     // add the cbx to the user's wallet
     /** 
-     *
-        * 
         * @return \Illuminate\Http\Response 
         */ 
     public function plusWallet(Request $request)
-    {
-        
+    {    
         $validator = Validator::make($request->all(), [ 
             'user_id' => 'required', 
             'cbx' => 'required', 

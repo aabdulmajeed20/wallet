@@ -29,7 +29,13 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function ewallet() {
+    public function ewallet() 
+    {
         return $this->hasMany('App\Ewallet');
+    }
+    
+    public function bid() 
+    {
+        return $this->hasMany('App\Bid');
     }
 }

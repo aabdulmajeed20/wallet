@@ -24,5 +24,7 @@ Route::post('/plusWallet', 'WalletController@plusWallet');
 
 Route::group(['middleware' => 'auth:api'], function(){
     Route::post('details', 'API\UserController@details');
+    Route::post('bids', 'API\BidController@index');
 });
+
 

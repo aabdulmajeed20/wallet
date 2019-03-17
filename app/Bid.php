@@ -14,6 +14,11 @@ class Bid extends Model
         'amount', 'status', 'provider_id',
     ];
 
+    public function user() 
+    {
+        return $this->belongsTo('App\User');
+    }
+
     public function provider()
     {
         return $this->belongsToMany('App\Provider');
