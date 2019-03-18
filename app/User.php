@@ -33,9 +33,5 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Ewallet');
     }
-    
-    public function bid() 
-    {
-        return $this->hasMany('App\Bid');
-    }
+
 }

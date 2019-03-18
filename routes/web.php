@@ -35,10 +35,12 @@ Route::post('makeTransfer', [
     'uses' => 'TransactionController@store',
     'as' => 'makeTransfer',
 ]);
+
 Route::get('transaction', [
     'uses' => 'TransactionController@index',
     'as' => 'transactions'
 ]);
+
 Route::get('/details/{transaction_id}', [
     'uses' => 'TransactionController@details',
     'as' => 'details'

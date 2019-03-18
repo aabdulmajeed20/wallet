@@ -25,6 +25,7 @@ Route::group(['middleware' => 'auth:api'], function()
 {
     Route::get('details', 'API\UserController@details');
     Route::post('/plusWallet', 'WalletController@plusWallet');
+    Route::post('/history', 'API\BidController@history');
 });
 
 
