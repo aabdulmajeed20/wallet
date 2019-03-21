@@ -25,14 +25,14 @@ class WalletController extends Controller
         return view('home', ['data' => $data, 'user' => $user]);
     }
 
-    // add the cbx to the user's wallet
+    // add the cbx to the user's wallet by the api
     /** 
         * @return \Illuminate\Http\Response 
         */ 
     public function plusWallet(Request $request)
     {    
+        $user = Auth::user(); 
         $validator = Validator::make($request->all(), [ 
-            'user_id' => 'required', 
             'cbx' => 'required', 
         ]);
         if ($validator->fails()) { 
@@ -40,7 +40,7 @@ class WalletController extends Controller
         }
         $input = $request->all();
         
-        $wallet = Ewallet::where('user_id', $input['user_id'])->first();
+        $wallet = Ewallet::where('user_id', $user->id)->first();
         $wallet->balance += $input['cbx'];
         $wallet->save();
         return response()->json("success", 200);
